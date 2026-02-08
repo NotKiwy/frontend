@@ -73,7 +73,7 @@ data class MeetupToCreateDTO(
 @JsonClass(generateAdapter = true)
 data class InviteDTO(
     val id: Long,
-    val agree: Boolean,
+    val agree: Boolean? = null,
     val meetup: MeetupDTO,
     val participant: PersonShortDTO
 )
@@ -91,14 +91,14 @@ data class InviteCreateDTO(
 @JsonClass(generateAdapter = true)
 data class InviteWithMeetupDTO(
     val id: Long,
-    val agree: Boolean,
+    val agree: Boolean? = null,
     val meetup: MeetupDTO
 )
 
 @JsonClass(generateAdapter = true)
 data class InviteWithPersonDTO(
     val id: Long,
-    val agree: Boolean,
+    val agree: Boolean? = null,
     val participant: PersonShortDTO
 )
 

@@ -111,11 +111,13 @@ fun InvitesContent(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(invites) { inv ->
-            InviteCard(
-                invite = inv,
-                onAccept = { onAccept(inv.id) },
-                onDecline = { onDecline(inv.id) }
-            )
+            if (inv.agree == null) {
+                InviteCard(
+                    invite = inv,
+                    onAccept = { onAccept(inv.id) },
+                    onDecline = { onDecline(inv.id) }
+                )
+            }
         }
     }
 }
@@ -164,7 +166,7 @@ fun InviteCard(
             }
             
             val ok = invite.agree
-            if (!ok) {
+            if (ok == null || !ok) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
